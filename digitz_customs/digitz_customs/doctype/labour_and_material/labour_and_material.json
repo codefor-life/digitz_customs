@@ -1,0 +1,91 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-02 09:25:45.458069",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "item_code",
+  "estimation_id",
+  "est",
+  "table_labour",
+  "idx",
+  "idxx",
+  "category",
+  "type"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Data",
+   "label": "Item Code",
+   "unique": 1
+  },
+  {
+   "fieldname": "estimation_id",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Estimation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "table_labour",
+   "fieldtype": "Table",
+   "options": "Labour And M Table"
+  },
+  {
+   "fieldname": "idx",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Idx"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Data",
+   "label": "Category"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Data",
+   "label": "Type"
+  },
+  {
+   "fieldname": "est",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Est",
+   "options": "Estimation",
+   "read_only": 1
+  },
+  {
+   "fieldname": "idxx",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "idxx"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-07-08 08:13:36.112164",
+ "modified_by": "Administrator",
+ "module": "digitz_customs",
+ "name": "Labour And Material",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
