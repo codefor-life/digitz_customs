@@ -99,7 +99,7 @@ def update_labour_and_material(doc):
     labourDoc.table_labour = []
 
 
-    labourDoc.idx= data.get("idx")
+    # labourDoc.idx= data.get("idx")
     labourDoc.category= data.get("category")                  
     labourDoc.type= data.get("type")
     labourDoc.item= data.get("item")
