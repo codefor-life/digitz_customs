@@ -31,6 +31,7 @@ app_license = "mit"
 # In hooks.py
 doctype_js = {
     "Contact": "public/js/contact.js",
+    "Quotation": "public/js/quotation.js",
     # "Estimation": "public/js/estimation.js"  # Add this line for the Estimation doctype
 }
 

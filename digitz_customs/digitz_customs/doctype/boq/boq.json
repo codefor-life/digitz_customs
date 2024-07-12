@@ -7,7 +7,9 @@
  "field_order": [
   "project_name",
   "date",
-  "boq_table"
+  "customer",
+  "boq_table",
+  "estimation_id"
  ],
  "fields": [
   {
@@ -24,11 +26,23 @@
    "fieldname": "boq_table",
    "fieldtype": "Table",
    "options": "BOQ Table"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "estimation_id",
+   "fieldtype": "Link",
+   "label": "Estimation Id",
+   "options": "Estimation"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-09 09:22:01.006323",
+ "modified": "2024-07-11 10:24:33.859442",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "BOQ",

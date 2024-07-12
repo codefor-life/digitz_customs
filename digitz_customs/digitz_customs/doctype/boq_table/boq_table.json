@@ -18,7 +18,8 @@
   "column_break_pxxj",
   "selling_sum",
   "rateno",
-  "ratem2"
+  "ratem2",
+  "labour_and_materials"
  ],
  "fields": [
   {
@@ -92,12 +93,18 @@
    "fieldname": "section_break_qwum",
    "fieldtype": "Section Break",
    "read_only": 1
+  },
+  {
+   "fieldname": "labour_and_materials",
+   "fieldtype": "Link",
+   "label": "Labour And Materials",
+   "options": "Labour And Material"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-09 08:29:46.404851",
+ "modified": "2024-07-11 10:34:46.485839",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "BOQ Table",

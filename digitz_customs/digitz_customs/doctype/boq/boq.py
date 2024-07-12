@@ -22,6 +22,7 @@ def create_boq(estimation_id):
     boq_doc = frappe.new_doc("BOQ")
     boq_doc.project_name = estimation_doc.project_name
     boq_doc.date = nowdate()
+    boq_doc.estimation_id = estimation_id
     boq_doc.boq_table = []
 
     # Copy data from estimation_doc to boq_doc as needed
@@ -37,6 +38,7 @@ def create_boq(estimation_id):
             "selling_sum": row.selling_sum,
             "rateno": row.rateno,
             "ratem2": row.ratem2,
+            "labour_and_materials": row.labour_and_materials
 		})
 
     boq_doc.insert()

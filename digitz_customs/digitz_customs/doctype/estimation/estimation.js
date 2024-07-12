@@ -5,7 +5,8 @@
 frappe.ui.form.on('Estimation', {
     refresh: function(frm) {
 
-    frm.add_custom_button(__("Create BOQ"), function(){
+    if(!frm.is_new()){
+        frm.add_custom_button(__("Create BOQ"), function(){
             //perform desired action such as routing to new form or fetching etc.
             console.log("Button Clicked")
             frappe.call({
@@ -20,6 +21,7 @@ frappe.ui.form.on('Estimation', {
                 }
             })
     });
+    }
 
     var css = document.createElement('style');
     css.type = 'text/css';

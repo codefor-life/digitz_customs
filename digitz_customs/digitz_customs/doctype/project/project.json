@@ -6,19 +6,97 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "name1"
+  "name1",
+  "project_delivery_date",
+  "status",
+  "column_break_juec",
+  "expected_start_date",
+  "expected_end_date",
+  "priority",
+  "customer_details_section",
+  "customer",
+  "column_break_nzbm",
+  "sales_order",
+  "notes_section",
+  "notes"
  ],
  "fields": [
   {
    "fieldname": "name1",
    "fieldtype": "Data",
-   "label": "Name",
+   "in_list_view": 1,
+   "label": "Project Name",
+   "reqd": 1,
    "unique": 1
+  },
+  {
+   "fieldname": "project_delivery_date",
+   "fieldtype": "Date",
+   "label": "Project Delivery Date"
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "\nOpen\nCompleted\nCancelled"
+  },
+  {
+   "fieldname": "column_break_juec",
+   "fieldtype": "Column Break"
+  },
+  {
+   "bold": 1,
+   "fieldname": "expected_start_date",
+   "fieldtype": "Date",
+   "label": "Expected Start Date"
+  },
+  {
+   "bold": 1,
+   "fieldname": "expected_end_date",
+   "fieldtype": "Date",
+   "label": "Expected End Date"
+  },
+  {
+   "fieldname": "priority",
+   "fieldtype": "Select",
+   "label": "Priority",
+   "options": "\nLow\nMedium\nHigh"
+  },
+  {
+   "fieldname": "customer_details_section",
+   "fieldtype": "Section Break",
+   "label": "Customer Details"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fieldname": "column_break_nzbm",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "sales_order",
+   "fieldtype": "Link",
+   "label": "Sales Order",
+   "options": "Sales Order"
+  },
+  {
+   "fieldname": "notes_section",
+   "fieldtype": "Section Break",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Text Editor",
+   "label": "Notes"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-01 15:34:04.825871",
+ "modified": "2024-07-12 14:19:33.027896",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Project",
