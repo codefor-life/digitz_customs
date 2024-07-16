@@ -38,7 +38,8 @@ def create_boq(estimation_id):
             "selling_sum": row.selling_sum,
             "rateno": row.rateno,
             "ratem2": row.ratem2,
-            "labour_and_materials": row.labour_and_materials
+            "labour_and_materials": row.labour_and_materials,
+            "description": row.description
 		})
 
     boq_doc.insert()

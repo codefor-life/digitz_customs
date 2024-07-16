@@ -25,7 +25,8 @@
   "profit_amount",
   "selling_sum",
   "rateno",
-  "ratem2"
+  "ratem2",
+  "description"
  ],
  "fields": [
   {
@@ -155,12 +156,17 @@
    "fieldtype": "Float",
    "label": "Fixed Amount",
    "read_only": 1
+  },
+  {
+   "fieldname": "description",
+   "fieldtype": "Small Text",
+   "label": "Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-08 08:01:00.875786",
+ "modified": "2024-07-13 09:10:27.606586",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Item Estimation Table",

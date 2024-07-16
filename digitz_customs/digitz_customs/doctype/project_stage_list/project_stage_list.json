@@ -1,0 +1,32 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-15 11:09:04.134654",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project_stage"
+ ],
+ "fields": [
+  {
+   "fieldname": "project_stage",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Project Stage",
+   "options": "Project Stages"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-15 11:32:19.092793",
+ "modified_by": "Administrator",
+ "module": "digitz_customs",
+ "name": "Project Stage List",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

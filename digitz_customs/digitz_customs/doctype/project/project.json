@@ -17,6 +17,9 @@
   "customer",
   "column_break_nzbm",
   "sales_order",
+  "section_break_updt",
+  "advance_entry",
+  "stage",
   "notes_section",
   "notes"
  ],
@@ -92,11 +95,27 @@
    "fieldname": "notes",
    "fieldtype": "Text Editor",
    "label": "Notes"
+  },
+  {
+   "fieldname": "section_break_updt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "stage",
+   "fieldtype": "Table",
+   "label": "Stage",
+   "options": "Project Stage List"
+  },
+  {
+   "fieldname": "advance_entry",
+   "fieldtype": "Link",
+   "label": "Advance Entry",
+   "options": "Receipt Entry"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-12 14:19:33.027896",
+ "modified": "2024-07-15 14:22:50.733569",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Project",

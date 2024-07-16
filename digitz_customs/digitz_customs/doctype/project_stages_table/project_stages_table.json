@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-07-15 10:57:43.204807",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "project_stage_defination",
+  "schedule_of_project",
+  "percentage_of_completion"
+ ],
+ "fields": [
+  {
+   "fieldname": "project_stage_defination",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Project Stage Defination"
+  },
+  {
+   "fieldname": "schedule_of_project",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Schedule Of Project"
+  },
+  {
+   "fieldname": "percentage_of_completion",
+   "fieldtype": "Float",
+   "in_list_view": 1,
+   "label": "Percentage Of Completion"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-07-15 11:57:14.112175",
+ "modified_by": "Administrator",
+ "module": "digitz_customs",
+ "name": "Project Stages Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -32,6 +32,7 @@ app_license = "mit"
 doctype_js = {
     "Contact": "public/js/contact.js",
     "Quotation": "public/js/quotation.js",
+    "Sales Order": "public/js/custom_sales_order.js"
     # "Estimation": "public/js/estimation.js"  # Add this line for the Estimation doctype
 }
 
