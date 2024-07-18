@@ -7,24 +7,21 @@
  "engine": "InnoDB",
  "field_order": [
   "project",
-  "table_jxhb",
+  "project_stage_table",
   "retentation_percentage",
   "advance_entry"
  ],
  "fields": [
   {
-   "fieldname": "table_jxhb",
-   "fieldtype": "Table",
-   "options": "Project Stages Table"
-  },
-  {
    "fieldname": "retentation_percentage",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Retentation Percentage"
   },
   {
    "fieldname": "advance_entry",
    "fieldtype": "Link",
+   "hidden": 1,
    "label": "Advance Entry",
    "options": "Receipt Entry"
   },
@@ -33,11 +30,16 @@
    "fieldtype": "Link",
    "label": "Project",
    "options": "Project"
+  },
+  {
+   "fieldname": "project_stage_table",
+   "fieldtype": "Table",
+   "options": "Project Stages Table"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-15 11:46:51.583614",
+ "modified": "2024-07-18 14:09:56.826780",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Project Stages",

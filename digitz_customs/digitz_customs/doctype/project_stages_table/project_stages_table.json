@@ -8,7 +8,8 @@
  "field_order": [
   "project_stage_defination",
   "schedule_of_project",
-  "percentage_of_completion"
+  "percentage_of_completion",
+  "proforma_invoice"
  ],
  "fields": [
   {
@@ -28,12 +29,19 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Percentage Of Completion"
+  },
+  {
+   "fieldname": "proforma_invoice",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Proforma Invoice",
+   "options": "Proforma Invoice"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-15 11:57:14.112175",
+ "modified": "2024-07-18 11:36:31.725286",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Project Stages Table",

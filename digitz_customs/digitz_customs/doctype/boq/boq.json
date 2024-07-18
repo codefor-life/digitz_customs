@@ -30,8 +30,8 @@
   {
    "fieldname": "customer",
    "fieldtype": "Link",
-   "label": "Customer",
-   "options": "Customer"
+   "label": "Prospect",
+   "options": "Prospect"
   },
   {
    "fieldname": "estimation_id",
@@ -42,7 +42,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-11 10:24:33.859442",
+ "modified": "2024-07-18 10:01:48.224922",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "BOQ",

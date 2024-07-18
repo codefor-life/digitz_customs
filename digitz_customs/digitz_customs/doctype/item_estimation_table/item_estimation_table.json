@@ -46,7 +46,7 @@
    "fieldname": "width_meter",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Width (meter)"
+   "label": "Width (meter) "
   },
   {
    "fieldname": "height_meter",
@@ -64,14 +64,14 @@
    "fieldname": "area",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Area",
+   "label": "Area (width x height)",
    "read_only": 1
   },
   {
    "fieldname": "perimeter",
    "fieldtype": "Float",
    "in_list_view": 1,
-   "label": "Perimeter",
+   "label": "Perimeter (2 x width + 2 x height)",
    "read_only": 1
   },
   {
@@ -166,7 +166,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-13 09:10:27.606586",
+ "modified": "2024-07-18 09:43:38.798082",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Item Estimation Table",

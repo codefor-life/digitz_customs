@@ -24,6 +24,7 @@ def create_boq(estimation_id):
     boq_doc.date = nowdate()
     boq_doc.estimation_id = estimation_id
     boq_doc.boq_table = []
+    boq_doc.customer = estimation_doc.prospect
 
     # Copy data from estimation_doc to boq_doc as needed
     for row in estimation_doc.table_hpqs:

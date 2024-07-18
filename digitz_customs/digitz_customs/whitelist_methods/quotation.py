@@ -15,8 +15,49 @@ def create_quotation(boq_docname):
                 "rate": table_item.cost or 0
             })
 
-    return {
-        "customer": boq_doc.customer,  # Adjust this based on your fields
-        "items": items,
-        "new_item_table": boq_doc.boq_table
-    }
+    # Check if customer with the prospect_id exists
+    existing_customer = frappe.get_list("Customer", filters={"custom_prospect_id": boq_doc.customer})
+    prospect = frappe.get_doc("Prospect",boq_doc.customer)
+    
+    if existing_customer:
+        # Customer with the prospect_id already exists, do not create a new one
+        customer_name = existing_customer[0].name
+        # Perform update logic if needed
+        # Example: frappe.set_value("Customer", customer_name, "field_name", value)
+        return {
+            "customer": existing_customer[0].name,  # Adjust this based on your fields
+            "items": items,
+            "new_item_table": boq_doc.boq_table
+        }
+    else:
+        # Customer with the prospect_id does not exist, create a new one
+        customer = frappe.new_doc("Customer")
+        # Set other fields as needed
+        customer.customer_name = prospect.prospect_owner_name
+        customer.custom_prospect_id = boq_doc.customer
+        customer.customer_group = "All Customer Groups"
+        all_areas = frappe.get_list("Area")  
+
+        if all_areas:
+            # random selection because of this area is mandtory field
+            customer.area = all_areas[0].name
+        else:
+            custom_area = frappe.new_doc("Area")
+            custom_area.area = "Temporary"
+            custom_area.emirate = "Abu Dhabi"
+
+            custom_area.insert()
+        # Set other fields based on your parameters
+        # Example: customer.customer_name = other_parameters["customer_name"]
+        
+        # Save the new customer document
+        customer.insert()
+
+        return {
+            "customer": customer.name,  # Adjust this based on your fields
+            "items": items,
+            "new_item_table": boq_doc.boq_table
+        }
+
+
+    

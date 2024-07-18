@@ -7,6 +7,8 @@
  "field_order": [
   "project_name",
   "date",
+  "prospect",
+  "section_break_zddk",
   "table_hpqs",
   "section_break_nmeo",
   "overhead_percentage",
@@ -88,11 +90,21 @@
    "fieldname": "column_break_npgc",
    "fieldtype": "Column Break",
    "read_only": 1
+  },
+  {
+   "fieldname": "prospect",
+   "fieldtype": "Link",
+   "label": "Prospect",
+   "options": "Prospect"
+  },
+  {
+   "fieldname": "section_break_zddk",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-08 08:00:00.026296",
+ "modified": "2024-07-18 09:40:43.796847",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Estimation",

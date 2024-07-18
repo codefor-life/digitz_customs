@@ -2,9 +2,31 @@
 // For license information, please see license.txt
 
 frappe.ui.form.on("Project", {
-	// refresh(frm) {
-
-	// }, 
+	refresh(frm) {
+		localStorage.setItem("current_project",frm.doc.name)
+		
+		frm.set_query('advance_entry', () => {
+			return {
+				filters: {				
+					'customer': frm.doc.customer,
+					'custom_project': frm.doc.name,
+					'custom_advance_payment': 1
+				}
+			}
+		});
+		frm.set_query('sales_order', () => {
+			return {
+				filters: {				
+					'customer': frm.doc.customer,
+					// 'custom_project': frm.doc.name,
+				}
+			}
+		});
+			$(frm.fields_dict.advance_entry.input).on("click", function(){
+				var customer = localStorage.setItem('prev_customer',frm.doc.customer);
+				var project = localStorage.setItem('prev_project',frm.doc.name);
+			})
+	}, 
     setup(frm) {
                 let data = localStorage.getItem('project_data');	
 				if (data) {
@@ -43,8 +65,11 @@ frappe.ui.form.on("Project", {
 					}
 				};
 			};
-		}
-		
+			
+		},
+	// advance_entry(frm){
+	// 	console.log("sdfjsldf  jk")
+	// }
 });
 
 

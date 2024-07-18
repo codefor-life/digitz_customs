@@ -15,10 +15,10 @@
  "fields": [
   {
    "fieldname": "type",
-   "fieldtype": "Link",
+   "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Type",
-   "options": "Item Type"
+   "options": "\nMaterial\nLabour"
   },
   {
    "fieldname": "item",
@@ -47,7 +47,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-06 12:29:04.844637",
+ "modified": "2024-07-18 09:47:43.374108",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Labour And M Table",

@@ -183,7 +183,7 @@ def update_below_table(doc,est_id):
 
         if(idx >=0):
             for type in all_types_of_amount:
-                if(type == "Raw Material"):
+                if(type == "Material"):
                         estimation_doc.table_hpqs[idx].raw_cost = all_types_of_amount[type]
                 elif(type == "Labour"):
                         estimation_doc.table_hpqs[idx].labour_cost = all_types_of_amount[type]
@@ -271,7 +271,7 @@ def append_to_below_table(labourDoc,est_id):
             idx+=1
 
     for type in all_types_of_amount:
-            if(type == "Raw Material"):
+            if(type == "Material"):
                     estimation_doc.table_hpqs[idx].raw_cost = all_types_of_amount[type]
             elif(type == "Labour"):
                     estimation_doc.table_hpqs[idx].labour_cost = all_types_of_amount[type]

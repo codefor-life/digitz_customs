@@ -15,10 +15,11 @@
   "priority",
   "customer_details_section",
   "customer",
+  "retentation_percentage",
   "column_break_nzbm",
   "sales_order",
-  "section_break_updt",
   "advance_entry",
+  "section_break_updt",
   "stage",
   "notes_section",
   "notes"
@@ -109,13 +110,18 @@
   {
    "fieldname": "advance_entry",
    "fieldtype": "Link",
-   "label": "Advance Entry",
+   "label": "Advance Receipt Entry",
    "options": "Receipt Entry"
+  },
+  {
+   "fieldname": "retentation_percentage",
+   "fieldtype": "Data",
+   "label": "Retentation Percentage"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-15 14:22:50.733569",
+ "modified": "2024-07-18 13:22:27.228198",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Project",

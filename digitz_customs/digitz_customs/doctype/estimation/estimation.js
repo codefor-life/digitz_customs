@@ -167,9 +167,10 @@ frappe.ui.form.on('Item Estimation Table', {
                             {
                                 fieldname: 'type',
                                 label: 'Type',
-                                fieldtype: 'Link',
-                                options:"Item Type",
+                                fieldtype: 'Select',
+                                options:"\nMaterial\nLabour",
                                 in_list_view: 1, 
+                                
                                 change: function() {
                                     const type = this.value;
                                     // const dialog = this.dialog;
@@ -179,7 +180,7 @@ frappe.ui.form.on('Item Estimation Table', {
                                     item_field.get_query = function() {
                                         return {
                                             filters: {
-                                                'item_type': type
+                                                'custom_item_type': type
                                             }
                                         };
                                     };
@@ -357,8 +358,8 @@ frappe.ui.form.on('Item Estimation Table', {
                                         {
                                             fieldname: 'type',
                                             label: 'Type',
-                                            fieldtype: 'Link',
-                                            options:"Item Type",
+                                            fieldtype: 'Select',
+                                            options:"\nMaterial\nLabour",
                                             in_list_view: 1, 
                                             change: function() {
                                                 const type = this.value;
@@ -369,7 +370,7 @@ frappe.ui.form.on('Item Estimation Table', {
                                                 item_field.get_query = function() {
                                                     return {
                                                         filters: {
-                                                            'item_type': type 
+                                                            'custom_item_type': type 
                                                         }
                                                     };
                                                 };
