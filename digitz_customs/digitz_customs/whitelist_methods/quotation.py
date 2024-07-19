@@ -27,6 +27,7 @@ def create_quotation(boq_docname):
         return {
             "customer": existing_customer[0].name,  # Adjust this based on your fields
             "items": items,
+            "item_name": boq_doc.item_name,
             "new_item_table": boq_doc.boq_table
         }
     else:
@@ -56,6 +57,7 @@ def create_quotation(boq_docname):
         return {
             "customer": customer.name,  # Adjust this based on your fields
             "items": items,
+            "item_name": boq_doc.item_name,
             "new_item_table": boq_doc.boq_table
         }
 

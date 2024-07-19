@@ -5,10 +5,11 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "item_name",
   "description",
   "qty",
-  "rate",
-  "amount"
+  "amount",
+  "rate"
  ],
  "fields": [
   {
@@ -34,12 +35,18 @@
    "fieldtype": "Float",
    "in_list_view": 1,
    "label": "Amount"
+  },
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Item Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-13 09:48:36.009175",
+ "modified": "2024-07-19 14:56:29.970022",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Quotation New Item Details",

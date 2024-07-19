@@ -10,7 +10,7 @@ frappe.ui.form.on("Quotation", {
                     args: {
                         quotation_id: frm.doc.name,
                     },
-                    callback: function(response){
+                    callback: function(response){ 
                         if(response.message){
                              // Store the data in localStorage to pass it to the new Sales Order form
                              localStorage.setItem('sales_order_data', JSON.stringify(response.message));
@@ -70,6 +70,7 @@ frappe.ui.form.on("Quotation", {
 			data.new_item_table.forEach(item =>{
 				console.log('Hello',item)
 				let row = frm.add_child("custom_item_table",{
+                    "item_name": data.item_name,
 					"description": item.description,
 					"qty":item.quantity,
 					"rate": item.selling_sum,
@@ -111,6 +112,6 @@ function update_total_big_display_1(frm) {
 
 
     // Directly update the HTML content of the 'total_big' field
-	frm.fields_dict['custom_amount_html'].$wrapper.html(displayHtml);
+	frm.fields_dict['custom_amount'].$wrapper.html(displayHtml);
 
 }

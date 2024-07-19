@@ -44,6 +44,7 @@
   "column_break_ghwk",
   "column_break_fomo",
   "section_break_19",
+  "item_table",
   "items",
   "section_break_29",
   "selected_item_stock_qty_in_the_warehouse",
@@ -81,7 +82,7 @@
    "fieldname": "naming_series",
    "fieldtype": "Select",
    "label": "Series",
-   "options": "QTN-.YYYY.-"
+   "options": "PFO-.YYYY.-"
   },
   {
    "fieldname": "customer",
@@ -436,9 +437,14 @@
   },
   {
    "fieldname": "project_stage",
-   "fieldtype": "Link",
-   "label": "Project Stage",
-   "options": "Project Stages"
+   "fieldtype": "Data",
+   "label": "Project Stage"
+  },
+  {
+   "fieldname": "item_table",
+   "fieldtype": "Table",
+   "label": "Item Table",
+   "options": "Quotation New Item Details"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -457,7 +463,7 @@
    "link_fieldname": "quotation"
   }
  ],
- "modified": "2024-07-18 12:00:44.543721",
+ "modified": "2024-07-19 10:05:48.506954",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Proforma Invoice",

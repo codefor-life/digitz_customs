@@ -21,6 +21,7 @@
   "advance_entry",
   "section_break_updt",
   "stage",
+  "project_stage_table",
   "notes_section",
   "notes"
  ],
@@ -104,6 +105,7 @@
   {
    "fieldname": "stage",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Stage",
    "options": "Project Stage List"
   },
@@ -117,11 +119,17 @@
    "fieldname": "retentation_percentage",
    "fieldtype": "Data",
    "label": "Retentation Percentage"
+  },
+  {
+   "fieldname": "project_stage_table",
+   "fieldtype": "Table",
+   "label": "Project Stage",
+   "options": "Project Stages Table"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-18 13:22:27.228198",
+ "modified": "2024-07-19 08:56:14.151410",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Project",

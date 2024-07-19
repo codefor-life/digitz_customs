@@ -10,7 +10,7 @@ frappe.ui.form.on('Estimation', {
             //perform desired action such as routing to new form or fetching etc.
             console.log("Button Clicked")
             frappe.call({
-                method: "digitz_customs.digitz_customs.doctype.boq.boq.create_boq",
+                method: "digitz_customs.digitz_customs.whitelist_methods.boq.create_boq",
                 args:{
                     estimation_id: frm.doc.name
                 },
@@ -160,6 +160,26 @@ frappe.ui.form.on('Item Estimation Table', {
                     //     default: data.estimation_id
                     // },
                     {
+                        fieldname: 'type',
+                        label: 'BOQ Item',
+                        fieldtype: 'Data',
+                        default: data.type,
+                        column:2,
+                    },
+                    {
+                        fieldtype: 'Column Break'
+                    },
+                    {
+                        fieldname: 'category',
+                        label: 'Category',
+                        fieldtype: 'Data',
+                        default: data.category,
+                        column:2,
+                    },
+                    {
+                        fieldtype: 'Section Break'
+                    },
+                    {
                         label: 'Items',
                         fieldname: 'items',
                         fieldtype: 'Table',
@@ -200,13 +220,19 @@ frappe.ui.form.on('Item Estimation Table', {
                                 fieldname: 'quantity',
                                 label: 'Quantity',
                                 fieldtype: 'Int',
-                                in_list_view: 1
+                                in_list_view: 1,
+                                change: function() {
+                                    calculate_amount(d)
+                                }          
                             },
                             {
                                 fieldname: 'cost',
-                                label: 'Cost',
+                                label: 'Rate',
                                 fieldtype: 'Int',
-                                in_list_view: 1
+                                in_list_view: 1,
+                                change: function() {
+                                    calculate_amount(d)
+                                }          
                             },
                             {
                                 fieldname: 'amount',
@@ -231,18 +257,7 @@ frappe.ui.form.on('Item Estimation Table', {
                     //     fieldtype: 'Int',
                     //     default: data.idxx,
                     // },
-                    {
-                        fieldname: 'type',
-                        label: 'BOQ Item',
-                        fieldtype: 'Data',
-                        default: data.type
-                    },
-                    {
-                        fieldname: 'category',
-                        label: 'Category',
-                        fieldtype: 'Data',
-                        default: data.category
-                    }
+                    
                     // Add more fields as necessary
                 ],
                 primary_action_label: 'Save',
@@ -311,7 +326,12 @@ frappe.ui.form.on('Item Estimation Table', {
 
             d.$wrapper.find('.modal-dialog').css("max-width", "90%");
             d.$wrapper.find('.modal-dialog').css("width", "90%");
+            
             d.show();
+            // Attach event listeners for real-time updates in child table fields
+            d.fields_dict.items.grid.wrapper.on('change', 'input[data-fieldname="quantity"], input[data-fieldname="cost"]', function() {
+                calculate_child_table_amount(d);
+            });
             console.log("-----------------------------------------------------------")
             console.log(d)
             // console.log(d.fields_dict['items'].grid)
@@ -351,6 +371,26 @@ frappe.ui.form.on('Item Estimation Table', {
                                 //     default: data.estimation_id
                                 // },
                                 {
+                                    fieldname: 'type',
+                                    label: 'BOQ Item',
+                                    fieldtype: 'Data',
+                                    default: response.message.type,
+                                    column:2,
+                                },
+                                {
+                                    fieldtype: 'Column Break'
+                                },
+                                {
+                                    fieldname: 'category',
+                                    label: 'Category',
+                                    fieldtype: 'Data',
+                                    default: response.message.category,
+                                    column:2,
+                                },
+                                {
+                                    fieldtype: 'Section Break'
+                                },
+                                {
                                     label: 'Items',
                                     fieldname: 'items',
                                     fieldtype: 'Table',
@@ -365,16 +405,16 @@ frappe.ui.form.on('Item Estimation Table', {
                                                 const type = this.value;
                                                 // const dialog = this.dialog;
                                                 const item_field = d.fields_dict.items.grid.fields_map.item;
-                                                    
+                
                                                 // Set query to filter items based on selected type
                                                 item_field.get_query = function() {
                                                     return {
                                                         filters: {
-                                                            'custom_item_type': type 
+                                                            'custom_item_type': type
                                                         }
                                                     };
                                                 };
-                                            }          
+                                            },
                                         },
                                         {
                                             fieldname: 'item',
@@ -388,13 +428,22 @@ frappe.ui.form.on('Item Estimation Table', {
                                             fieldname: 'quantity',
                                             label: 'Quantity',
                                             fieldtype: 'Int',
-                                            in_list_view: 1
+                                            in_list_view: 1,
+                                            change: function() {
+                                                amt = calculate_amount(d)
+                                                // console.log("sdfjklaj")
+                                                // d.fields_dict.items.grid.fields_map.item.amount = amt;
+                                                // d.set_value("amount",amt);
+                                            }          
                                         },
                                         {
                                             fieldname: 'cost',
-                                            label: 'Cost',
+                                            label: 'Rate',
                                             fieldtype: 'Int',
-                                            in_list_view: 1
+                                            in_list_view: 1,
+                                            change: function() {
+                                                calculate_amount(d)
+                                            }          
                                         },
                                         {
                                             fieldname: 'amount',
@@ -419,19 +468,6 @@ frappe.ui.form.on('Item Estimation Table', {
                                 //     fieldtype: 'Int',
                                 //     default: data.idxx,
                                 // },
-                                {
-                                    fieldname: 'type',
-                                    label: 'BOQ Item',
-                                    fieldtype: 'Data',
-                                    default: response.message.type
-                                },
-                                {
-                                    fieldname: 'category',
-                                    label: 'Category',
-                                    fieldtype: 'Data',
-                                    default: response.message.category
-                                }
-                                // Add more fields as necessary
                             ],
                             primary_action_label: 'Save New Changes',
                             primary_action(values) {
@@ -493,6 +529,10 @@ frappe.ui.form.on('Item Estimation Table', {
                         d.$wrapper.find('.modal-dialog').css("max-width", "90%");
                         d.$wrapper.find('.modal-dialog').css("width", "90%");
                         d.show();
+                         // Attach event listeners for real-time updates in child table fields
+                            d.fields_dict.items.grid.wrapper.on('change', 'input[data-fieldname="quantity"], input[data-fieldname="cost"]', function() {
+                                calculate_child_table_amount(d);
+                            });
                     } else {
                         frappe.msgprint('Failed to create Labour And Material: ' + response.exc);
                     }
@@ -504,3 +544,24 @@ frappe.ui.form.on('Item Estimation Table', {
     }
 });
   
+
+function calculate_amount(d){
+    console.log("dsjfsal aslfjal ksjf lakfj asklfj ")
+    let qty = d.get_value("quantity") || 0;
+    let rate = d.get_value("cost") || 0;
+    let amount = qty * rate;
+
+    d.set_value('amount', amount);
+    d.refresh_fields(["amount"]);  // Refresh the field to show the updated value
+}
+
+function calculate_child_table_amount(dialog) {
+    let child_table_data = dialog.fields_dict.items.grid.get_data();
+    child_table_data.forEach((row, idx) => {
+        let quantity = row.quantity || 0;
+        let rate = row.cost || 0;
+        let amount = quantity * rate;
+        dialog.fields_dict.items.grid.get_row(idx).doc.amount = amount;
+    });
+    dialog.fields_dict.items.grid.refresh();  // Refresh the table to show updated values
+}

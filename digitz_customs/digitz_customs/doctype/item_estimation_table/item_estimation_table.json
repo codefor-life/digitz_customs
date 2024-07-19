@@ -17,6 +17,7 @@
   "labour_and_materials",
   "click_btn",
   "column_break_pxxj",
+  "description",
   "raw_cost",
   "finished_cost",
   "labour_cost",
@@ -25,8 +26,7 @@
   "profit_amount",
   "selling_sum",
   "rateno",
-  "ratem2",
-  "description"
+  "ratem2"
  ],
  "fields": [
   {
@@ -160,13 +160,14 @@
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-18 09:43:38.798082",
+ "modified": "2024-07-19 14:44:51.039703",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Item Estimation Table",

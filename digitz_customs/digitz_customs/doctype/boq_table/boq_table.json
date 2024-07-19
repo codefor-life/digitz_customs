@@ -8,19 +8,19 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_qwum",
+  "description",
   "category",
   "type",
   "width_meter",
   "height_meter",
   "quantity",
+  "column_break_pxxj",
   "area",
   "perimeter",
-  "column_break_pxxj",
   "selling_sum",
   "rateno",
   "ratem2",
-  "labour_and_materials",
-  "description"
+  "labour_and_materials"
  ],
  "fields": [
   {
@@ -97,20 +97,21 @@
   },
   {
    "fieldname": "labour_and_materials",
-   "fieldtype": "Link",
+   "fieldtype": "Data",
    "label": "Labour And Materials",
    "options": "Labour And Material"
   },
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-13 09:19:51.788367",
+ "modified": "2024-07-19 14:46:08.022285",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "BOQ Table",

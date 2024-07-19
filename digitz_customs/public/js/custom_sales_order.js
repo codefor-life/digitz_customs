@@ -21,6 +21,10 @@ frappe.ui.form.on("Sales Order",{
             });
         }
     },
+    make_taxes_and_totals(frm){
+        update_total_big_display_1(frm);
+
+    },
     setup: function(frm){
         let data = localStorage.getItem('sales_order_data');
 			frm.trigger("get_default_company_and_warehouse").then(()=>{
@@ -38,19 +42,47 @@ frappe.ui.form.on("Sales Order",{
 						for(let key in item){
 							row[key] = item[key]
 						}
-				});
+				    });
+                    data["custom_item_table"].forEach(item =>{
+                        let row = frm.add_child('custom_item_table');
+
+						for(let key in item){
+							row[key] = item[key]
+						}
+                    })
 				frm.refresh_field('items');
-	
+                frm.refresh_field('custom_item_table');
 				// Call other_fields_orcustom function
 				// frappe.ui.form.trigger('Quotation', 'rate_includes_tax', frm);
 				frm.trigger("make_taxes_and_totals");
 				// Refresh the field to show the added rows
 				frm.refresh_field('items');
-	
+                frm.refresh_field('custom_item_table');
+
 				// Clear the data from localStorage
 				localStorage.removeItem('sales_order_data');
 				console.log("removed data",localStorage.getItem('sales_order_data'))
 			}
 		})
-    }
+    },
+    
 })
+
+
+function update_total_big_display_1(frm) {
+
+	// let netTotal = isNaN(frm.doc.net_total) ? 0 : parseFloat(frm.doc.net_total).toFixed(2);
+	let netTotal=0;
+	frm.doc.custom_item_table.forEach((e)=>{
+			netTotal+= e.amount;
+	})
+
+    // Add 'AED' prefix and format net_total for display
+
+	let displayHtml = `<div style="font-size: 25px; text-align: right; color: black;">AED ${netTotal}</div>`;
+
+
+    // Directly update the HTML content of the 'total_big' field
+	frm.fields_dict['custom_amount'].$wrapper.html(displayHtml);
+
+}
