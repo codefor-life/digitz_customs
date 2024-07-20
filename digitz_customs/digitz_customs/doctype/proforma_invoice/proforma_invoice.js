@@ -6,6 +6,7 @@ frappe.ui.form.on("Proforma Invoice", {
         prev_project_name = localStorage.getItem('prev_project_name')
         prev_stage_name = localStorage.getItem('prev_stage_name')
         customer_name = localStorage.getItem('customer_name')
+		percentage_of_completion = localStorage.getItem('percentage_of_completion')
 
         
         if(prev_project_name && prev_stage_name && customer_name){
@@ -13,10 +14,12 @@ frappe.ui.form.on("Proforma Invoice", {
             frm.set_value('project', prev_project_name);
             frm.set_value('project_stage', prev_stage_name);
             frm.set_value('customer',customer_name)
+			frm.set_value('percentage_of_completion',percentage_of_completion)
         }
         localStorage.removeItem('prev_project_name');
         localStorage.removeItem('prev_stage_name');
         localStorage.removeItem('customer_name')
+		localStorage.removeItem('percentage_of_completion');
 
 
 

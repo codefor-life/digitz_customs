@@ -77,12 +77,15 @@ function update_total_big_display_1(frm) {
 			netTotal+= e.amount;
 	})
 
+    frm.set_value("custom_net_total_copy",netTotal)
+
     // Add 'AED' prefix and format net_total for display
 
 	let displayHtml = `<div style="font-size: 25px; text-align: right; color: black;">AED ${netTotal}</div>`;
 
 
     // Directly update the HTML content of the 'total_big' field
+    frm.set_value("custom_amount",displayHtml)
 	frm.fields_dict['custom_amount'].$wrapper.html(displayHtml);
 
 }

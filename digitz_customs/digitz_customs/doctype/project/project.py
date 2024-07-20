@@ -19,5 +19,38 @@ def create_project_via_sales_order(sales_order_id):
 
 		return{
 			"customer": sales_doc.customer,
-			"sales_order":sales_doc.name
+			"sales_order":sales_doc.name,
+			"project_amount":sales_doc.custom_net_total_copy
 		}
+
+@frappe.whitelist()
+def calculate_rest_amt(sales_order_id, retentation_percentage):
+    sales_doc = frappe.get_doc("Sales Order", sales_order_id)
+    
+    try:
+        net_total = float(sales_doc.custom_net_total_copy)
+        retention_percentage = float(retentation_percentage)
+    except ValueError as e:
+        frappe.throw(f"Invalid value provided: {e}")
+    
+    retention_amt = (net_total * retention_percentage) / 100
+
+    return {
+        "total_project_amt": net_total,
+        "retentation_amt": retention_amt,
+        "amount_after_retentation": net_total - retention_amt,
+    }
+
+@frappe.whitelist()
+def load_project_amt(sales_order_id):
+    sales_doc = frappe.get_doc("Sales Order", sales_order_id)
+    
+    try:
+        net_total = float(sales_doc.custom_net_total_copy)
+    except ValueError as e:
+        frappe.throw(f"Invalid value provided: {e}")
+    
+
+    return {
+        "total_project_amt": net_total,
+    }

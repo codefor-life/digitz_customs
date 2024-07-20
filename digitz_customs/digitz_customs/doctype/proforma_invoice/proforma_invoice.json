@@ -34,6 +34,7 @@
   "company",
   "project",
   "project_stage",
+  "percentage_of_completion",
   "accounts_section",
   "credit_sale",
   "credit_days",
@@ -445,6 +446,11 @@
    "fieldtype": "Table",
    "label": "Item Table",
    "options": "Quotation New Item Details"
+  },
+  {
+   "fieldname": "percentage_of_completion",
+   "fieldtype": "Float",
+   "label": "Percentage Of Completion"
   }
  ],
  "index_web_pages_for_search": 1,
@@ -463,7 +469,7 @@
    "link_fieldname": "quotation"
   }
  ],
- "modified": "2024-07-19 10:05:48.506954",
+ "modified": "2024-07-20 16:45:02.703624",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Proforma Invoice",

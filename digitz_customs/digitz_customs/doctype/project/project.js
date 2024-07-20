@@ -48,7 +48,7 @@ frappe.ui.form.on("Project", {
 			})
 
 		// Ensure the script runs after the form is refreshed
-        frm.fields_dict['project_stage_table'].grid.wrapper.on('focus', '.grid-row', function(e) {
+        frm.fields_dict['project_stage_table'].grid.wrapper.on('click', '.grid-row', function(e) {
 			console.log("ciiiiii")
             // Get the clicked row
             var $row = $(e.currentTarget);
@@ -57,17 +57,19 @@ frappe.ui.form.on("Project", {
 
 			
             // Listen for clicks on the proforma_invoice link field
-            $row.find('[data-fieldname="proforma_invoice"]').on('focus', function() {
+            $row.find('[data-fieldname="proforma_invoice"]').on('click', function() {
                 var stage_name = doc.project_stage_defination;
+				var percentage_of_completion = doc.percentage_of_completion
                 var project_name = frm.doc.name1;
 				var customer_name = frm.doc.customer;
-
+				
 				if(!stage_name){
 					frappe.msgprint({
 						title: __('Notification'),
 						indicator: 'orange',
 						message: __('Please Enter Stage Defination / Name')
 					});
+					return false;
 				}
 				
                 console.log("clicked",stage_name,project_name)
@@ -75,12 +77,18 @@ frappe.ui.form.on("Project", {
                 localStorage.setItem('prev_stage_name', stage_name);
                 localStorage.setItem('prev_project_name', project_name);
 				localStorage.setItem('customer_name', customer_name);
+				localStorage.setItem('percentage_of_completion', percentage_of_completion)
+				// localStorage.setItem('project_amount', frm.doc.project_amount)
+				// localStorage.setItem("advance_entry_id",frm.doc.advance_entry)
+				// localStorage.setItem("sales_order_id",frm.doc.sales_order)
 
                 
                 // Optionally, you can also use frappe.msgprint to show the values for debugging
                 // frappe.msgprint('Stage Name: ' + stage_name + '<br>Project Name: ' + project_name);
             });
 		})
+
+		
 	}, 
     setup(frm) {
                 let data = localStorage.getItem('project_data');	
@@ -90,7 +98,8 @@ frappe.ui.form.on("Project", {
 					// Set the fields with the retrieved data
 					frm.set_value('customer', data.customer);
                     frm.set_value('sales_order', data.sales_order);
-
+					frm.set_value("project_amount", data.project_amount);
+					
 
 				    frm.refresh_field();
 	
@@ -125,6 +134,30 @@ frappe.ui.form.on("Project", {
 	// advance_entry(frm){
 	// 	console.log("sdfjsldf  jk")
 	// }
+	retentation_percentage(frm){
+		let percentage = parseFloat(frm.doc.retentation_percentage);
+		if (isNaN(percentage) || percentage < 0) {
+            frappe.msgprint('Please enter a valid retention percentage.');
+            return;
+        }
+
+
+		frappe.call({
+			        method: "digitz_customs.digitz_customs.doctype.project.project.calculate_rest_amt",
+			        args:{
+			                sales_order_id: frm.doc.sales_order,
+							retentation_percentage: percentage
+			        },
+			        callback: function(response) {
+			                if (response.message) {
+								console.log("retentation % and more",response)
+										let data = response.message
+			                            frm.set_value("retentation_amt",data.retentation_amt)
+										frm.set_value("amount_after_retentation",data.amount_after_retentation)
+			                    }
+			                }
+			    })
+	}
 });
 
 
