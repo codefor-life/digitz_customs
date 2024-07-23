@@ -3,7 +3,6 @@ import json
 
 @frappe.whitelist()
 def create_sales_order(quotation_id):
-    print(quotation_id)
 
     qoc_doc = frappe.get_doc("Quotation", quotation_id)
     
@@ -20,3 +19,13 @@ def create_sales_order(quotation_id):
     return {
         qoc_doc,
     }
+
+
+@frappe.whitelist()
+def get_sales_order(sales_order_id):
+    sales_order_doc = frappe.get_doc("Sales Order",sales_order_id)
+
+    if(sales_order_doc):
+        return sales_order_doc
+    else:
+        return ""

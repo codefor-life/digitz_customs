@@ -9,7 +9,8 @@
   "project_stage_defination",
   "schedule_of_project",
   "percentage_of_completion",
-  "proforma_invoice"
+  "proforma_invoice",
+  "sales_invoice"
  ],
  "fields": [
   {
@@ -36,12 +37,19 @@
    "in_list_view": 1,
    "label": "Proforma Invoice",
    "options": "Proforma Invoice"
+  },
+  {
+   "fieldname": "sales_invoice",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Sales Invoice",
+   "options": "Sales Invoice"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-07-18 11:36:31.725286",
+ "modified": "2024-07-22 09:51:21.392282",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Project Stages Table",

@@ -54,3 +54,14 @@ def load_project_amt(sales_order_id):
     return {
         "total_project_amt": net_total,
     }
+
+
+
+@frappe.whitelist()
+def get_project(project_id):
+    project_doc = frappe.get_doc("Project", project_id)
+
+    if(project_doc):
+        return project_doc
+    else:
+        return ""

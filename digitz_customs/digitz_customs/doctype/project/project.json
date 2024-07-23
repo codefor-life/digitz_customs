@@ -15,10 +15,15 @@
   "priority",
   "customer_details_section",
   "customer",
-  "retentation_percentage",
-  "column_break_nzbm",
   "sales_order",
+  "column_break_nzbm",
   "advance_entry",
+  "section_break_pgei",
+  "retentation_percentage",
+  "retentation_amt",
+  "column_break_tlzb",
+  "amount_after_retentation",
+  "project_amount",
   "section_break_updt",
   "stage",
   "project_stage_table",
@@ -125,11 +130,37 @@
    "fieldtype": "Table",
    "label": "Project Stage",
    "options": "Project Stages Table"
+  },
+  {
+   "fieldname": "section_break_pgei",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "retentation_amt",
+   "fieldtype": "Int",
+   "label": "Retentation Amount",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "column_break_tlzb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "amount_after_retentation",
+   "fieldtype": "Int",
+   "label": "Amount After Retentation",
+   "non_negative": 1
+  },
+  {
+   "fieldname": "project_amount",
+   "fieldtype": "Int",
+   "label": "Project Amount",
+   "non_negative": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-07-19 08:56:14.151410",
+ "modified": "2024-07-22 14:35:41.432217",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Project",

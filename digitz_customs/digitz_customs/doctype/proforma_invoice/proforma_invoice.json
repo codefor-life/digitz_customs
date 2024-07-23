@@ -271,6 +271,7 @@
   {
    "fieldname": "items",
    "fieldtype": "Table",
+   "hidden": 1,
    "label": "Items",
    "options": "Quotation Item"
   },
@@ -444,13 +445,13 @@
   {
    "fieldname": "item_table",
    "fieldtype": "Table",
-   "label": "Item Table",
-   "options": "Quotation New Item Details"
+   "options": "Proforma Invoice Table"
   },
   {
    "fieldname": "percentage_of_completion",
-   "fieldtype": "Float",
-   "label": "Percentage Of Completion"
+   "fieldtype": "Int",
+   "label": "Percentage Of Completion",
+   "non_negative": 1
   }
  ],
  "index_web_pages_for_search": 1,
@@ -469,7 +470,7 @@
    "link_fieldname": "quotation"
   }
  ],
- "modified": "2024-07-20 16:45:02.703624",
+ "modified": "2024-07-23 09:00:53.145133",
  "modified_by": "Administrator",
  "module": "digitz_customs",
  "name": "Proforma Invoice",

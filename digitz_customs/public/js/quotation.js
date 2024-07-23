@@ -110,7 +110,7 @@ function update_total_big_display_1(frm) {
 
 	let displayHtml = `<div style="font-size: 25px; text-align: right; color: black;">AED ${netTotal}</div>`;
 
-
+    frm.set_value("custom_net_total_copy",netTotal)
     // Directly update the HTML content of the 'total_big' field
 	frm.fields_dict['custom_amount'].$wrapper.html(displayHtml);
 

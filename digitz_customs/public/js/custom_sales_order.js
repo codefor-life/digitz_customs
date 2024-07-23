@@ -1,6 +1,8 @@
 
 frappe.ui.form.on("Sales Order",{
     refresh: function(frm){
+        let displayHtml = `<div style="font-size: 25px; text-align: right; color: black;">AED ${frm.doc.custom_net_total_copy}</div>`;
+		frm.fields_dict['total_big'].$wrapper.html(displayHtml);
         if(!frm.is_new()){
             frm.add_custom_button(__('Create Project'), function() {
                 frappe.call({
@@ -54,7 +56,7 @@ frappe.ui.form.on("Sales Order",{
                 frm.refresh_field('custom_item_table');
 				// Call other_fields_orcustom function
 				// frappe.ui.form.trigger('Quotation', 'rate_includes_tax', frm);
-				frm.trigger("make_taxes_and_totals");
+				
 				// Refresh the field to show the added rows
 				frm.refresh_field('items');
                 frm.refresh_field('custom_item_table');
@@ -62,6 +64,7 @@ frappe.ui.form.on("Sales Order",{
 				// Clear the data from localStorage
 				localStorage.removeItem('sales_order_data');
 				console.log("removed data",localStorage.getItem('sales_order_data'))
+                frm.trigger("make_taxes_and_totals");
 			}
 		})
     },
