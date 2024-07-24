@@ -28,7 +28,9 @@ def create_quotation(boq_docname):
             "customer": existing_customer[0].name,  # Adjust this based on your fields
             "items": items,
             "item_name": boq_doc.item_name,
-            "new_item_table": boq_doc.boq_table
+            "new_item_table": boq_doc.boq_table,
+            "estimation_id":boq_doc.estimation_id,
+            "boq_id":boq_doc.name
         }
     else:
         # Customer with the prospect_id does not exist, create a new one

@@ -20,7 +20,12 @@ frappe.ui.form.on('Estimation', {
                     }
                 }
             })
-    });
+        });
+
+        frm.add_custom_button(__('Show Created BOQ'), function() {
+            // Redirect to BOQ list view with filters applied
+            frappe.set_route('List', 'BOQ', {'estimation_id' : frm.doc.name} );
+        });
     }
 
     var css = document.createElement('style');

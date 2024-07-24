@@ -21,9 +21,10 @@ frappe.ui.form.on("Quotation", {
                     }
                 })
             });
-            frm.add_custom_button(__('Create New Project'), function() {
-                localStorage.setItem('customer', frm.doc.customer);
-                frappe.set_route('Form', 'Project', 'new-project-mqkhkpotmg')
+
+            // frm.add_custom_button(__('Create New Project'), function() {
+            //     localStorage.setItem('customer', frm.doc.customer);
+            //     frappe.set_route('Form', 'Project', 'new-project-mqkhkpotmg')
                 // frappe.call({
                 //     method: "digitz_customs.digitz_customs.whitelist_methods.sales_order.create_sales_order",
                 //     args: {
@@ -38,6 +39,11 @@ frappe.ui.form.on("Quotation", {
                 //         }
                 //     }
                 // })
+            // });
+
+            frm.add_custom_button(__('Show Created Sales Order'), function() {
+                // Redirect to BOQ list view with filters applied
+                frappe.set_route('List', 'Sales Order', {'custom_quotation_id' : frm.doc.name} );
             });
         }
     },
@@ -58,6 +64,9 @@ frappe.ui.form.on("Quotation", {
 
             // Set the fields with the retrieved data
             frm.set_value('customer', data.customer);
+            frm.set_value("custom_estimation_id",data.estimation_id);
+            frm.set_value("custom_boq_id",data.boq_id);
+
             data.items.forEach(item => {
                 let row = frm.add_child('items', {
 					warehouse: frm.doc.warehouse,

@@ -7,7 +7,7 @@ frappe.ui.form.on("Sales Order",{
             frm.add_custom_button(__('Create Project'), function() {
                 frappe.call({
                     method: "digitz_customs.digitz_customs.doctype.project.project.create_project_via_sales_order",
-                    args: {
+                    args: { 
                         sales_order_id: frm.doc.name,
                     },
                     callback: function(response){
@@ -20,6 +20,11 @@ frappe.ui.form.on("Sales Order",{
                         }
                     }
                 })
+            });
+
+            frm.add_custom_button(__('Show Created Project'), function() {
+                // Redirect to BOQ list view with filters applied
+                frappe.set_route('List', 'Project', {'sales_order' : frm.doc.name} );
             });
         }
     },
@@ -37,6 +42,7 @@ frappe.ui.form.on("Sales Order",{
 					console.log("sales_order_data",data)
 					// Set the fields with the retrieved data
 					frm.set_value('customer', data.customer);
+                    frm.set_value('custom_quotation_id', data.name);
 
 					data["items"].forEach(item => {
 						let row = frm.add_child('items');

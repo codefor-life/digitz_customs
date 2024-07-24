@@ -34,7 +34,7 @@ frappe.ui.form.on("Proforma Invoice", {
         //         // frappe.set_route("Form","Sales Invoice","new-sales-invoice-tzqymbxqvm")
         //     });
         // }
-
+		// frm.set_df_property('custom_item_table', 'hidden', 0);
 	},
 	setup(frm){
 			if(!frm.doc.project_stage){

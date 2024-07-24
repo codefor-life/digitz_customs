@@ -2,6 +2,55 @@
 console.log("file is connected.");
 
 frappe.ui.form.on("Sales Invoice",{
+    refresh(frm){
+        // frm.set_df_property('custom_item_table', 'hidden', 1);
+
+        frm.add_custom_button(__('Allocate'), function() {
+            // Define the dialog
+            let d = new frappe.ui.Dialog({
+                title: 'Allocate Receipt Entry',
+                fields: [
+                    {
+                        label: 'Receipt Entry',
+                        fieldname: 'receipt_entry',
+                        fieldtype: 'Link',
+                        options: 'Receipt Entry',
+                        get_query: function() {
+                            return {
+                                filters: [
+                                    ['custom_advance_payment', '=', 1],
+                                    ['custom_project', '=', frm.doc.custom_project],
+                                    ['custom_customer', '=', frm.doc.customer]
+                                ]
+                            };
+                        }
+                    }
+                ],
+                primary_action: function(data) {
+                    console.log('Selected Receipt Entry:', data.receipt_entry);
+
+                    frappe.call({
+                        method: 'digitz_customs.digitz_customs.whitelist_methods.custom_receipt_entry.receipt_allocation',
+                        args:{
+                            receipt_entry_id: data.receipt_entry,
+                            sales_inv_id: frm.doc.name
+                        },
+                        callback: function(response){
+                            if(response.message){
+
+                            }
+                        }
+                    })
+
+                    d.hide();
+                },
+                primary_action_label: __('Allocate')
+            });
+
+            // Show the dialog
+            d.show();
+        });
+    },
     make_taxes_and_totals(frm){
         update_total_big_display_1(frm);
     },

@@ -60,7 +60,6 @@ frappe.ui.form.on("Progressive Invoice", {
                                 }
                             })
 
-                            console.log("hello bhaii jui")
                             if(data.advance_entry){
                                 frappe.call({
                                     method: "digitz_customs.digitz_customs.whitelist_methods.custom_receipt_entry.get_amount",

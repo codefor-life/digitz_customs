@@ -20,7 +20,8 @@ def create_project_via_sales_order(sales_order_id):
 		return{
 			"customer": sales_doc.customer,
 			"sales_order":sales_doc.name,
-			"project_amount":sales_doc.custom_net_total_copy
+			"project_amount":sales_doc.custom_net_total_copy,
+            "sales_order_id": sales_order_id
 		}
 
 @frappe.whitelist()

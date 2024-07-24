@@ -84,6 +84,13 @@ frappe.ui.form.on('BOQ', {
                     }
                 });
             });
+
+
+            frm.add_custom_button(__('Show Created Quotation'), function() {
+                // Redirect to BOQ list view with filters applied
+                // frappe.set_route('List', 'Quotation', {'custom_estimation_id' : frm.doc.estimation_id} );
+                frappe.set_route('List','Quotation',{'custom_boq_id': frm.doc.name});
+            });
         }
     }
 });
