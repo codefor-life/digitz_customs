@@ -30,7 +30,7 @@ frappe.ui.form.on("Sales Invoice",{
                     console.log('Selected Receipt Entry:', data.receipt_entry);
 
                     frappe.call({
-                        method: 'digitz_customs.digitz_customs.whitelist_methods.custom_receipt_entry.receipt_allocation',
+                        method: 'digitz_customs.digitz_customs.whitelist_methods.custom_receipt_entry.receipt_allocation_updates',
                         args:{
                             receipt_entry_id: data.receipt_entry,
                             sales_inv_id: frm.doc.name
