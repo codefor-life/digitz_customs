@@ -1,0 +1,29 @@
+
+{
+    "columns": [],
+    "creation": "2024-07-26 09:18:05.208070",
+    "disabled": 0,
+    "docstatus": 0,
+    "doctype": "Report",
+    "filters": [
+    ],
+    "idx": 0,
+    "is_standard": "Yes",
+    "json": "{\"filters\":[{\"fieldname\":\"project\",\"label\":\"Project\",\"fieldtype\":\"Link\",\"options\":\"Project\",\"default\":\"\"},{\"fieldname\":\"stage\",\"label\":\"Stage\",\"fieldtype\":\"Link\",\"options\":\"Stage Table\",\"default\":\"\"}],\"fields\":[[\"name\",\"Progressive Invoice\"],[\"customer\",\"Progressive Invoice\"],[\"description\",\"Stage Table\"],[\"item\",\"Stage Table\"],[\"amount\",\"Stage Table\"],[\"prev_amount\",\"Stage Table\"],[\"current_amount\",\"Stage Table\"],[\"advance_deducation\",\"Progressive Invoice\"],[\"retentation_deducation\",\"Progressive Invoice\"]],\"order_by\":\"`tabProgressive Invoice`.creation desc\",\"add_totals_row\":0,\"page_length\":20,\"column_widths\":{\"name\":120,\"customer\":144,\"Stage Table:description\":120,\"Stage Table:item\":208,\"Stage Table:amount\":120,\"Stage Table:prev_amount\":120,\"Stage Table:current_amount\":120,\"advance_deducation\":120,\"retentation_deducation\":120},\"group_by\":null}",
+    "letter_head": "sales invoice footer",
+    "letterhead": null,
+    "modified": "2024-07-26 08:56:27.519990",
+    "modified_by": "Administrator",
+    "module": "digitz_customs",
+    "name": "Progressive Report",
+    "owner": "Administrator",
+    "prepared_report": 0,
+    "ref_doctype": "Progressive Invoice",
+    "report_name": "Progressive Report",
+    "report_type": "Script Report",
+    "roles": [
+        {
+            "role": "System Manager"
+        }
+    ]
+}

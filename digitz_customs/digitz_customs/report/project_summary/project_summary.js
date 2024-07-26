@@ -12,7 +12,7 @@ frappe.query_reports["Project Summary"] = {
 		// 	reqd: 1,
 		// },
 		{
-			fieldname: "name",
+			fieldname: "project",
 			label: __("Project"),
 			fieldtype: "Link",
 			options: "Project",
@@ -30,12 +30,14 @@ frappe.query_reports["Project Summary"] = {
 		// // 	fieldtype: "Link",
 		// // 	options: "Project Type",
 		// // },
-		{
-			fieldname: "priority",
-			label: __("Priority"),
-			fieldtype: "Select",
-			options: "\nLow\nMedium\nHigh",
-		},
+		// {
+		// 	fieldname: "priority",
+		// 	label: __("Priority"),
+		// 	fieldtype: "Select",
+		// 	options: "\nLow\nMedium\nHigh",
+		// },
+		// {"fieldname": "project_stage_defination", "label": "Project Stage Definition", "fieldtype": "Data", "width": 120},
+
 	],
 };
 

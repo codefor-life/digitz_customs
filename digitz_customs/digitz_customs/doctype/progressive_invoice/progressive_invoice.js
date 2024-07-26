@@ -14,16 +14,43 @@ frappe.ui.form.on("Progressive Invoice", {
                     },
                 callback: function(response){ 
                         if(response.message){
-                            let data = response.message;
-                            console.log("Project Data", data)
+                            frm.data = response.message;
+                            frm.trigger("set_data_in_fields");
+                        }
+                }
+            })
+        }
+    },
+	refresh(frm) {
+        frm.add_custom_button("Update",function(){
+            console.log(frm)
+            if(frm.doc.project){
+                frappe.call({
+                    method : "digitz_customs.digitz_customs.doctype.project.project.get_project",
+                    args: {
+                        project_id: frm.doc.project,
+                    },
+                    callback: function(response){
+                        if(response.message){
+                            frm.data = response.message;
+                            frm.trigger('set_data_in_fields');
+                            console.log("hdskfjsldf ")
+                        }
+                    }
+                })
+            }
+        })
+	},
+    set_data_in_fields(frm){
+                            console.log("Project Data", frm.data)
                             let all_proforma_invoices = []
     
-                            frm.set_value("customer",data.customer);
-                            frm.set_value("project",data.name);
-                            frm.set_value("retentation_deducation",data.retentation_amt);
+                            frm.set_value("customer",frm.data.customer);
+                            frm.set_value("project",frm.data.name);
+                            frm.set_value("retentation_deducation",frm.data.retentation_amt);
                             // frm.set_value()
     
-                            data.project_stage_table.forEach(item =>{
+                            frm.data.project_stage_table.forEach(item =>{
                                 all_proforma_invoices.push(item.proforma_invoice);
                             }) 
                             console.log(all_proforma_invoices);
@@ -39,12 +66,12 @@ frappe.ui.form.on("Progressive Invoice", {
                                         let idx = 0;
                                         let prev_amount = 0; 
 
-                                        data.project_stage_table.forEach(item =>{
+                                        frm.doc.stage_details = []
+                                        frm.data.project_stage_table.forEach(item =>{
                                             let current_amount = net_total_amts[idx];
     
                                             // Calculate amount as sum of prev_amount and current_amount
                                             let amount = prev_amount + current_amount;
-
                                             let row = frm.add_child("stage_details",{
                                                 "item": item.project_stage_defination,
                                                 "amount": amount,
@@ -60,11 +87,11 @@ frappe.ui.form.on("Progressive Invoice", {
                                 }
                             })
 
-                            if(data.advance_entry){
+                            if(frm.data.advance_entry){
                                 frappe.call({
                                     method: "digitz_customs.digitz_customs.whitelist_methods.custom_receipt_entry.get_amount",
                                     args:{
-                                        receipt_entry_id: data.advance_entry
+                                        receipt_entry_id: frm.data.advance_entry
                                     },
                                     callback: function(response){
                                         if(response.message){
@@ -74,18 +101,7 @@ frappe.ui.form.on("Progressive Invoice", {
                                     }
                                 })    
                             }
-
                             
-                            
-
-                            
-                            
-                        }
-                }
-            })
-        }
-    },
-	refresh(frm) {
-        
-	},
+                            frm.data = null
+    }
 });
